@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">探索大语言模型</string>
+    <string name="app_title">探索大语言模型</string>
+    
+    <!-- LLM Names -->
+    <string name="chatgpt_name">ChatGPT</string>
+    <string name="gemini_name">谷歌 Gemini</string>
+    <string name="claude_name">Anthropic Claude</string>
+    <string name="tongyi_name">阿里通义</string>
+    <string name="tigerllm_name">TigerLLM</string>
+
+    <!-- LLM Descriptions -->
+    <string name="chatgpt_description">ChatGPT是由OpenAI开发的AI语言模型。它在自然对话、写作和各领域问题解决方面表现出色。</string>
+    <string name="gemini_description">Google Gemini是谷歌的下一代AI模型，设计用于处理文本、代码、音频和图像等多种类型的信息。</string>
+    <string name="claude_description">Claude是Anthropic创建的AI助手，以其深思熟虑的回应和强大的分析写作能力而闻名。</string>
+    <string name="tongyi_description">通义是阿里巴巴的先进语言模型，结合了中英文能力和深厚的文化理解。</string>
+    <string name="tigerllm_description">TigerLLM是一个虚构的孟加拉国LLM，展示了南亚AI发展的潜力。</string>
+</resources>
