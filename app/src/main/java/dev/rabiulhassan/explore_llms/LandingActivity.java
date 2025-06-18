@@ -3,14 +3,16 @@ package dev.rabiulhassan.explore_llms;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LandingActivity extends AppCompatActivity {
     private static final String TAG = "LandingActivity";
-    private static final int SPLASH_TIMEOUT = 3000; // 3 seconds
     private MediaPlayer mediaPlayer;
     private boolean isNavigating = false;
 
@@ -36,18 +38,19 @@ public class LandingActivity extends AppCompatActivity {
                 Log.e(TAG, "Error initializing MediaPlayer", e);
             }
 
-            // Set click listener to skip splash screen
-            View rootView = findViewById(R.id.landing_root);
-            if (rootView != null) {
-                rootView.setOnClickListener(v -> navigateToList());
-                Log.d(TAG, "Click listener set");
-            } else {
-                Log.e(TAG, "Could not find landing_root view");
+            // Set button click to navigate
+            Button proceedButton = findViewById(R.id.proceed_button);
+            if (proceedButton != null) {
+                proceedButton.setOnClickListener(v -> navigateToList());
+                Log.d(TAG, "Proceed button listener set");
             }
 
-            // Auto navigate after timeout
-            new Handler().postDelayed(this::navigateToList, SPLASH_TIMEOUT);
-            Log.d(TAG, "Auto-navigation timer set");
+            // Animate title and button
+            TextView titleView = findViewById(R.id.app_title);
+            Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.bounce_in_bottom);
+            if (titleView != null) titleView.startAnimation(fadeIn);
+            if (proceedButton != null) proceedButton.startAnimation(fadeIn);
+
         } catch (Exception e) {
             Log.e(TAG, "Error in onCreate", e);
             finish();

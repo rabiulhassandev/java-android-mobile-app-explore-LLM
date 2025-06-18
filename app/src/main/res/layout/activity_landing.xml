@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/landing_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
     <ImageView
         android:id="@+id/background_image"
@@ -12,9 +13,11 @@
         android:src="@drawable/landing_background" />
 
     <TextView
+        android:id="@+id/app_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_marginTop="200dp"
+        android:layout_centerHorizontal="true"
         android:text="@string/app_title"
         android:textColor="@android:color/white"
         android:textSize="32sp"
@@ -23,4 +26,13 @@
         android:padding="16dp"
         android:background="#80000000" />
 
+    <Button
+        android:id="@+id/proceed_button"
+        android:layout_width="250dp"
+        android:layout_height="70dp"
+        android:layout_centerInParent="true"
+        android:text="Get Started"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:background="@android:color/background_light" />
 </RelativeLayout>
