@@ -5,13 +5,13 @@
     <!-- LLM Names -->
     <string name="chatgpt_name">ChatGPT</string>
     <string name="gemini_name">Google Gemini</string>
-    <string name="claude_name">Anthropic Claude</string>
+    <string name="claude_name">Claude AI</string>
     <string name="tongyi_name">Alibaba Tongyi</string>
     <string name="tigerllm_name">TigerLLM</string>
 
     <!-- LLM Descriptions -->
     <string name="chatgpt_description">ChatGPT is an AI language model developed by OpenAI. It excels in natural conversation, writing, and problem-solving across various domains.</string>
-    <string name="gemini_description">Google Gemini is a next-generation AI model from Google, designed to handle multiple types of information including text, code, audio, and images.</string>
+    <string name="gemini_description">Google Gemini is a next-generation AI model from Google for handling text, code, audio, and images.</string>
     <string name="claude_description">Claude is an AI assistant created by Anthropic, known for its thoughtful responses and strong capabilities in analysis and writing.</string>
     <string name="tongyi_description">Tongyi is Alibaba\'s advanced language model, combining Chinese and English capabilities with deep cultural understanding.</string>
     <string name="tigerllm_description">TigerLLM is a fictional Bangladeshi LLM showcasing the potential of AI development in South Asia.</string>

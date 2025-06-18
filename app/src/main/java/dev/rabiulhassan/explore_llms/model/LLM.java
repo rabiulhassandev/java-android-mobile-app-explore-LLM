@@ -5,15 +5,16 @@ public class LLM {
     private String description;
     private int imageResourceId;
     private float rating;
+    private String releaseDate;
 
-    public LLM(String name, String description, int imageResourceId) {
+    public LLM(String name, String description, int imageResourceId, String releaseDate) {
         this.name = name;
         this.description = description;
         this.imageResourceId = imageResourceId;
+        this.releaseDate = releaseDate;
         this.rating = 0.0f;
     }
 
-    // Getters and Setters
     public String getName() {
         return name;
     }
@@ -32,5 +33,9 @@ public class LLM {
 
     public void setRating(float rating) {
         this.rating = rating;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
     }
 }
