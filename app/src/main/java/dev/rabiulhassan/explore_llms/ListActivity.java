@@ -12,6 +12,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +63,24 @@ public class ListActivity extends AppCompatActivity {
             if (llmList.isEmpty()) {
                 Toast.makeText(this, "No LLMs available", Toast.LENGTH_SHORT).show();
             }
+
+            
+            // Bottom Navigation Setup
+            BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
+            bottomNav.setOnNavigationItemSelectedListener(item -> {
+                int id = item.getItemId();
+                if (id == R.id.nav_home) {
+                    Toast.makeText(this, "Home clicked", Toast.LENGTH_SHORT).show();
+                    return true;
+                } else if (id == R.id.nav_about) {
+                    Toast.makeText(this, "About clicked", Toast.LENGTH_SHORT).show();
+                    return true;
+                } else if (id == R.id.nav_settings) {
+                    Toast.makeText(this, "Settings clicked", Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+                return false;
+            });
 
         } catch (Exception e) {
             Log.e("ListActivity", "Error in onCreate", e);
@@ -129,7 +148,19 @@ public class ListActivity extends AppCompatActivity {
         } else if (id == R.id.action_settings) {
             Toast.makeText(this, "Settings clicked", Toast.LENGTH_SHORT).show();
             return true;
+        } else if (id == R.id.nav_home) {
+            Toast.makeText(this, "Home clicked", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == R.id.nav_about) {
+            Toast.makeText(this, "About clicked", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == R.id.nav_settings) {
+            Toast.makeText(this, "Settings clicked", Toast.LENGTH_SHORT).show();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+    //   i want to do the same for bottom_nav_menu
 }
