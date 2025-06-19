@@ -59,8 +59,26 @@ public class LLMAdapter extends RecyclerView.Adapter<LLMAdapter.ViewHolder> impl
             intent.putExtra("llm_release_date", llm.getReleaseDate());
             intent.putExtra("llm_image", llm.getImageResourceId());
             intent.putExtra("llm_banner", llm.getBannerResourceId());
+            intent.putExtra("llm_history", llm.getHistory());
             context.startActivity(intent);
         });
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView llmImage, llmBanner;
+        TextView llmName, llmDescription, llmReleaseDate, llmHistory;
+        Button readMoreButton;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            llmImage = itemView.findViewById(R.id.llm_image);
+            llmBanner = itemView.findViewById(R.id.llm_banner);
+            llmName = itemView.findViewById(R.id.llm_name);
+            llmDescription = itemView.findViewById(R.id.llm_description);
+            llmReleaseDate = itemView.findViewById(R.id.llm_release_date);
+            llmHistory = itemView.findViewById(R.id.llm_history);
+            readMoreButton = itemView.findViewById(R.id.read_more_button);
+        }
     }
 
     @Override
@@ -99,21 +117,5 @@ public class LLMAdapter extends RecyclerView.Adapter<LLMAdapter.ViewHolder> impl
                 notifyDataSetChanged();
             }
         };
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView llmImage, llmBanner;
-        TextView llmName, llmDescription, llmReleaseDate;
-        Button readMoreButton;
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            llmImage = itemView.findViewById(R.id.llm_image);
-            llmBanner = itemView.findViewById(R.id.llm_banner);
-            llmName = itemView.findViewById(R.id.llm_name);
-            llmDescription = itemView.findViewById(R.id.llm_description);
-            llmReleaseDate = itemView.findViewById(R.id.llm_release_date);
-            readMoreButton = itemView.findViewById(R.id.read_more_button);
-        }
     }
 }

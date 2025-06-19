@@ -13,7 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 public class DetailActivity extends AppCompatActivity {
 
     private ImageView bannerImageView, logoImageView;
-    private TextView titleTextView, releaseDateTextView, descriptionTextView, ratingValueTextView;
+    private TextView titleTextView, releaseDateTextView, descriptionTextView, historyTextView, ratingValueTextView;
     private RatingBar ratingBar;
 
     @Override
@@ -34,8 +34,9 @@ public class DetailActivity extends AppCompatActivity {
         titleTextView = findViewById(R.id.llm_title);
         releaseDateTextView = findViewById(R.id.llm_release_date);
         descriptionTextView = findViewById(R.id.llm_description);
+        historyTextView = findViewById(R.id.llm_history);
         ratingBar = findViewById(R.id.llm_rating_bar);
-        ratingValueTextView = findViewById(R.id.llm_rating_value); // Ensure this exists in XML
+        ratingValueTextView = findViewById(R.id.llm_rating_value);
 
         // Get data from intent
         Intent intent = getIntent();
@@ -44,6 +45,7 @@ public class DetailActivity extends AppCompatActivity {
         String releaseDate = intent.getStringExtra("llm_release_date");
         int imageRes = intent.getIntExtra("llm_image", R.drawable.ic_info);
         int bannerRes = intent.getIntExtra("llm_banner", R.drawable.banner_default);
+        String history = intent.getStringExtra("llm_history");
 
         // Load saved rating from SharedPreferences
         SharedPreferences prefs = getSharedPreferences("llm_ratings", MODE_PRIVATE);
@@ -52,11 +54,13 @@ public class DetailActivity extends AppCompatActivity {
         // Set data to views
         titleTextView.setText(name);
         releaseDateTextView.setText("Released: " + releaseDate);
-        descriptionTextView.setText(description);
         logoImageView.setImageResource(imageRes);
         bannerImageView.setImageResource(bannerRes);
         ratingBar.setRating(savedRating);
         ratingValueTextView.setText("Rating: " + savedRating + "/5");
+        descriptionTextView.setText(description);
+        historyTextView.setText(history);
+
 
         // Rating change listener
         ratingBar.setOnRatingBarChangeListener((bar, rating, fromUser) -> {

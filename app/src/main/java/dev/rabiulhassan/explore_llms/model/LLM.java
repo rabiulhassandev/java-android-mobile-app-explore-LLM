@@ -1,17 +1,18 @@
 package dev.rabiulhassan.explore_llms.model;
 
 public class LLM {
-    private String name, description, releaseDate;
+    private String name, description, releaseDate, history;
     private int imageResourceId, bannerResourceId;
     private float rating;
 
-    public LLM(String name, String description, String releaseDate, int imageResourceId, int bannerResourceId) {
+    public LLM(String name, String description, String releaseDate, int imageResourceId, int bannerResourceId, String history) {
         this.name = name;
         this.description = description;
         this.releaseDate = releaseDate;
         this.imageResourceId = imageResourceId;
         this.bannerResourceId = bannerResourceId;
         this.rating = 0.0f; // Default rating
+        this.history = history; // Initialize history
     }
 
     // Getters
@@ -21,6 +22,7 @@ public class LLM {
     public int getImageResourceId() { return imageResourceId; }
     public int getBannerResourceId() { return bannerResourceId; }
     public float getRating() { return rating; }
+    public String getHistory() { return history; }
 
     // Setters
     public void setRating(float rating) {

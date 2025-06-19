@@ -30,7 +30,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:gravity="center_horizontal"
             android:orientation="vertical">
 
             <!-- Banner -->
@@ -89,7 +88,17 @@
                 android:layout_height="wrap_content"
                 android:text="Rating: 0.0"
                 android:textSize="16sp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="50dp"
+                android:textStyle="bold"/>
+
+
+            <!-- Brief Intro title -->
+            <TextView
+                android:id="@+id/llm_brief_intro_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Brief Introduction:"
+                android:textSize="20sp"
                 android:textStyle="bold"/>
 
             <!-- Full Description -->
@@ -97,10 +106,32 @@
                 android:id="@+id/llm_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="20dp"
                 android:justificationMode="inter_word"
                 android:lineSpacingExtra="4dp"
                 android:text="Full description goes here..."
+                android:textAlignment="viewStart"
+                android:textSize="16sp" />
+
+                
+            <!-- History title -->
+            <TextView
+                android:id="@+id/llm_history_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="History:"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <!-- History -->
+            <TextView
+                android:id="@+id/llm_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:text="History goes here..."
                 android:textAlignment="viewStart"
                 android:textSize="16sp" />
 
