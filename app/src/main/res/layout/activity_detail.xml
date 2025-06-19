@@ -41,7 +41,7 @@
                 android:layout_marginBottom="16dp"
                 android:contentDescription="LLM Banner"
                 android:scaleType="centerCrop"
-                android:src="@drawable/default_banner" />
+                android:src="@drawable/banner_default" />
 
             <!-- Rounded Logo -->
             <ImageView

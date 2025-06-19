@@ -47,6 +47,7 @@ public class LLMAdapter extends RecyclerView.Adapter<LLMAdapter.ViewHolder> impl
 
         holder.llmName.setText(llm.getName());
         holder.llmDescription.setText(llm.getDescription());
+        holder.llmReleaseDate.setText("Released: " + llm.getReleaseDate());
         holder.llmImage.setImageResource(llm.getImageResourceId());
 
         holder.readMoreButton.setOnClickListener(v -> {
@@ -55,6 +56,7 @@ public class LLMAdapter extends RecyclerView.Adapter<LLMAdapter.ViewHolder> impl
             Intent intent = new Intent(context, DetailActivity.class);
             intent.putExtra("llm_name", llm.getName());
             intent.putExtra("llm_description", llm.getDescription());
+            intent.putExtra("llm_release_date", llm.getReleaseDate());
             intent.putExtra("llm_image", llm.getImageResourceId());
             context.startActivity(intent);
         });
@@ -100,7 +102,7 @@ public class LLMAdapter extends RecyclerView.Adapter<LLMAdapter.ViewHolder> impl
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView llmImage;
-        TextView llmName, llmDescription;
+        TextView llmName, llmDescription, llmReleaseDate;
         Button readMoreButton;
 
         public ViewHolder(@NonNull View itemView) {
@@ -108,6 +110,7 @@ public class LLMAdapter extends RecyclerView.Adapter<LLMAdapter.ViewHolder> impl
             llmImage = itemView.findViewById(R.id.llm_image);
             llmName = itemView.findViewById(R.id.llm_name);
             llmDescription = itemView.findViewById(R.id.llm_description);
+            llmReleaseDate = itemView.findViewById(R.id.llm_release_date);
             readMoreButton = itemView.findViewById(R.id.read_more_button);
         }
     }

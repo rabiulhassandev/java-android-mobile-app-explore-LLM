@@ -39,16 +39,17 @@ public class DetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String name = intent.getStringExtra("llm_name");
         String description = intent.getStringExtra("llm_description");
-        String release = intent.getStringExtra("llm_release");
-        int imageRes = intent.getIntExtra("llm_image", R.drawable.default_banner);
+        String releaseDate = intent.getStringExtra("llm_release_date");
+        int imageRes = intent.getIntExtra("llm_image", R.drawable.ic_info);
+        int bannerRes = intent.getIntExtra("llm_banner", R.drawable.banner_default);
         float rating = intent.getFloatExtra("llm_rating", 0.0f);
 
         // Set data to views
         titleTextView.setText(name);
-        releaseDateTextView.setText("Released: " + release);
+        releaseDateTextView.setText("Released: " + releaseDate);
         descriptionTextView.setText(description);
         logoImageView.setImageResource(imageRes);
-        bannerImageView.setImageResource(imageRes); // or a separate banner if available
+        bannerImageView.setImageResource(bannerRes); // or a separate banner if available
         ratingBar.setRating(rating);
     }
 }
