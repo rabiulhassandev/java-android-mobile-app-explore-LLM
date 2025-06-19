@@ -37,6 +37,8 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
+
+        <!-- Release Date -->
         <TextView
             android:id="@+id/llm_release_date"
             android:layout_width="wrap_content"
@@ -46,7 +48,6 @@
             android:textColor="#666666"
             android:textSize="14sp" />
 
-        <!-- Release Date -->
 
         <!-- Description -->
         <TextView

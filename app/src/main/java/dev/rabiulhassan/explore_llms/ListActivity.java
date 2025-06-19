@@ -74,32 +74,37 @@ public class ListActivity extends AppCompatActivity {
         llmList.add(new LLM(
                 getString(R.string.chatgpt_name),
                 getString(R.string.chatgpt_description),
+                "November 2022",
                 R.drawable.img_chatgpt,
-                "November 2022"
+                R.drawable.banner_chatgpt
         ));
         llmList.add(new LLM(
                 getString(R.string.gemini_name),
                 getString(R.string.gemini_description),
+                "December 2023",
                 R.drawable.img_gemini,
-                "December 2023"
+                R.drawable.banner_gemini
         ));
         llmList.add(new LLM(
                 getString(R.string.claude_name),
                 getString(R.string.claude_description),
+                "March 2023",
                 R.drawable.img_claude,
-                "March 2023"
+                R.drawable.banner_claude
         ));
         llmList.add(new LLM(
                 getString(R.string.tongyi_name),
                 getString(R.string.tongyi_description),
+                "April 2023",
                 R.drawable.img_tongyi,
-                "April 2023"
+                R.drawable.banner_tongyi
         ));
         llmList.add(new LLM(
                 getString(R.string.tigerllm_name),
                 getString(R.string.tigerllm_description),
+                "June 2024",
                 R.drawable.img_tiger,
-                "June 2024"
+                R.drawable.banner_tigerllm
         ));
     }
 

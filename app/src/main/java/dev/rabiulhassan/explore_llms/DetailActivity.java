@@ -1,6 +1,7 @@
 package dev.rabiulhassan.explore_llms;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -12,7 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 public class DetailActivity extends AppCompatActivity {
 
     private ImageView bannerImageView, logoImageView;
-    private TextView titleTextView, releaseDateTextView, descriptionTextView;
+    private TextView titleTextView, releaseDateTextView, descriptionTextView, ratingValueTextView;
     private RatingBar ratingBar;
 
     @Override
@@ -34,6 +35,7 @@ public class DetailActivity extends AppCompatActivity {
         releaseDateTextView = findViewById(R.id.llm_release_date);
         descriptionTextView = findViewById(R.id.llm_description);
         ratingBar = findViewById(R.id.llm_rating_bar);
+        ratingValueTextView = findViewById(R.id.llm_rating_value); // Ensure this exists in XML
 
         // Get data from intent
         Intent intent = getIntent();
@@ -42,14 +44,30 @@ public class DetailActivity extends AppCompatActivity {
         String releaseDate = intent.getStringExtra("llm_release_date");
         int imageRes = intent.getIntExtra("llm_image", R.drawable.ic_info);
         int bannerRes = intent.getIntExtra("llm_banner", R.drawable.banner_default);
-        float rating = intent.getFloatExtra("llm_rating", 0.0f);
+
+        // Load saved rating from SharedPreferences
+        SharedPreferences prefs = getSharedPreferences("llm_ratings", MODE_PRIVATE);
+        float savedRating = prefs.getFloat(name, 0.0f); // Key = LLM name
 
         // Set data to views
         titleTextView.setText(name);
         releaseDateTextView.setText("Released: " + releaseDate);
         descriptionTextView.setText(description);
         logoImageView.setImageResource(imageRes);
-        bannerImageView.setImageResource(bannerRes); // or a separate banner if available
-        ratingBar.setRating(rating);
+        bannerImageView.setImageResource(bannerRes);
+        ratingBar.setRating(savedRating);
+        ratingValueTextView.setText("Rating: " + savedRating + "/5");
+
+        // Rating change listener
+        ratingBar.setOnRatingBarChangeListener((bar, rating, fromUser) -> {
+            if (fromUser) {
+                ratingValueTextView.setText("Rating: " + rating + "/5");
+
+                // Save to SharedPreferences
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putFloat(name, rating);
+                editor.apply();
+            }
+        });
     }
 }
