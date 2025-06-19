@@ -1,80 +1,54 @@
 package dev.rabiulhassan.explore_llms;
 
-import android.content.SharedPreferences;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.VideoView;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class DetailActivity extends AppCompatActivity {
-    private static final String PREFS_NAME = "LLMRatings";
-    private SharedPreferences preferences;
-    private String llmName;
+
+    private ImageView bannerImageView, logoImageView;
+    private TextView titleTextView, releaseDateTextView, descriptionTextView;
+    private RatingBar ratingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        
-        // Get data from intent
-        llmName = getIntent().getStringExtra("llm_name");
-        String description = getIntent().getStringExtra("llm_description");
-        int imageResId = getIntent().getIntExtra("llm_image", 0);
+        // Set up toolbar with back navigation
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(v -> finish());
 
-        // Initialize views
-        ImageView imageView = findViewById(R.id.detail_image);
-        TextView nameTextView = findViewById(R.id.detail_name);
-        TextView descTextView = findViewById(R.id.detail_description);
-        RatingBar ratingBar = findViewById(R.id.rating_bar);
-        VideoView videoView = findViewById(R.id.video_view);
+        // Bind views
+        bannerImageView = findViewById(R.id.llm_banner);
+        logoImageView = findViewById(R.id.llm_logo);
+        titleTextView = findViewById(R.id.llm_title);
+        releaseDateTextView = findViewById(R.id.llm_release_date);
+        descriptionTextView = findViewById(R.id.llm_description);
+        ratingBar = findViewById(R.id.llm_rating_bar);
+
+        // Get data from intent
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("llm_name");
+        String description = intent.getStringExtra("llm_description");
+        String release = intent.getStringExtra("llm_release");
+        int imageRes = intent.getIntExtra("llm_image", R.drawable.default_banner);
+        float rating = intent.getFloatExtra("llm_rating", 0.0f);
 
         // Set data to views
-        imageView.setImageResource(imageResId);
-        nameTextView.setText(llmName);
-        descTextView.setText(description);
-
-        // Load saved rating
-        float savedRating = preferences.getFloat(llmName, 0.0f);
-        ratingBar.setRating(savedRating);
-
-        // Set up rating listener
-        ratingBar.setOnRatingBarChangeListener((ratingBar1, rating, fromUser) -> {
-            if (fromUser) {
-                saveRating(rating);
-            }
-        });        // Set up video if available
-        if (llmName.equals(getString(R.string.chatgpt_name))) {
-            try {
-                Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.chatgpt_video);
-                videoView.setVideoURI(videoUri);
-                videoView.setOnPreparedListener(mp -> {
-                    videoView.setVisibility(View.VISIBLE);
-                    videoView.start();
-                });
-                videoView.setOnErrorListener((mp, what, extra) -> {
-                    videoView.setVisibility(View.GONE);
-                    return true;
-                });
-            } catch (Exception e) {
-                videoView.setVisibility(View.GONE);
-            }
-        } else {
-            videoView.setVisibility(View.GONE);
-        }
-
-        // Set up back button
-        findViewById(R.id.back_button).setOnClickListener(v -> finish());
-    }
-
-    private void saveRating(float rating) {
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putFloat(llmName, rating);
-        editor.apply();
+        titleTextView.setText(name);
+        releaseDateTextView.setText("Released: " + release);
+        descriptionTextView.setText(description);
+        logoImageView.setImageResource(imageRes);
+        bannerImageView.setImageResource(imageRes); // or a separate banner if available
+        ratingBar.setRating(rating);
     }
 }

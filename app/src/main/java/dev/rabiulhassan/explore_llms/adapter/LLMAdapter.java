@@ -1,6 +1,8 @@
 package dev.rabiulhassan.explore_llms.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import dev.rabiulhassan.explore_llms.DetailActivity;
 import dev.rabiulhassan.explore_llms.R;
 import dev.rabiulhassan.explore_llms.model.LLM;
 
@@ -22,30 +25,13 @@ import java.util.List;
 public class LLMAdapter extends RecyclerView.Adapter<LLMAdapter.ViewHolder> implements Filterable {
 
     private Context context;
-    private List<LLM> llmList;
-    private List<LLM> llmListFull; // For filtering
+    private List<LLM> llmList;           // full original list
+    private List<LLM> llmListFiltered;   // filtered list for displaying
 
     public LLMAdapter(Context context, List<LLM> llmList) {
         this.context = context;
         this.llmList = llmList;
-        this.llmListFull = new ArrayList<>(llmList);
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView llmImage;
-        TextView llmName;
-        TextView llmReleaseDate;
-        TextView llmDescription;
-        Button readMoreButton;
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            llmImage = itemView.findViewById(R.id.llm_image);
-            llmName = itemView.findViewById(R.id.llm_name);
-            llmReleaseDate = itemView.findViewById(R.id.llm_date);
-            llmDescription = itemView.findViewById(R.id.llm_description);
-            readMoreButton = itemView.findViewById(R.id.btn_read_more);
-        }
+        this.llmListFiltered = new ArrayList<>(llmList);
     }
 
     @NonNull
@@ -57,54 +43,72 @@ public class LLMAdapter extends RecyclerView.Adapter<LLMAdapter.ViewHolder> impl
 
     @Override
     public void onBindViewHolder(@NonNull LLMAdapter.ViewHolder holder, int position) {
-        LLM currentLLM = llmList.get(position);
-        holder.llmName.setText(currentLLM.getName());
-        holder.llmReleaseDate.setText(currentLLM.getReleaseDate());
-        holder.llmDescription.setText(currentLLM.getDescription());
-        holder.llmImage.setImageResource(currentLLM.getImageResourceId());
+        LLM llm = llmListFiltered.get(position);
 
-        // You can add click listener on readMoreButton here if needed
+        holder.llmName.setText(llm.getName());
+        holder.llmDescription.setText(llm.getDescription());
+        holder.llmImage.setImageResource(llm.getImageResourceId());
+
         holder.readMoreButton.setOnClickListener(v -> {
-            // Handle Read More click
-            // For example, start a detail activity or show dialog
+
+            // Navigate to DetailActivity
+            Intent intent = new Intent(context, DetailActivity.class);
+            intent.putExtra("llm_name", llm.getName());
+            intent.putExtra("llm_description", llm.getDescription());
+            intent.putExtra("llm_image", llm.getImageResourceId());
+            context.startActivity(intent);
         });
     }
 
     @Override
     public int getItemCount() {
-        return llmList.size();
+        return llmListFiltered.size();
     }
 
     @Override
     public Filter getFilter() {
-        return llmFilter;
-    }
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String query = constraint == null ? "" : constraint.toString().toLowerCase().trim();
+                List<LLM> filtered = new ArrayList<>();
 
-    private final Filter llmFilter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-            List<LLM> filteredList = new ArrayList<>();
-            if (constraint == null || constraint.length() == 0) {
-                filteredList.addAll(llmListFull);
-            } else {
-                String filterPattern = constraint.toString().toLowerCase().trim();
-                for (LLM llm : llmListFull) {
-                    if (llm.getName().toLowerCase().contains(filterPattern)) {
-                        filteredList.add(llm);
+                if (query.isEmpty()) {
+                    filtered.addAll(llmList);
+                } else {
+                    for (LLM llm : llmList) {
+                        if (llm.getName().toLowerCase().contains(query)) {
+                            filtered.add(llm);
+                        }
                     }
                 }
-            }
-            FilterResults results = new FilterResults();
-            results.values = filteredList;
-            return results;
-        }
 
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-            llmList.clear();
-            //noinspection unchecked
-            llmList.addAll((List<LLM>) results.values);
-            notifyDataSetChanged();
+                FilterResults results = new FilterResults();
+                results.values = filtered;
+                return results;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                llmListFiltered.clear();
+                //noinspection unchecked
+                llmListFiltered.addAll((List<LLM>) results.values);
+                notifyDataSetChanged();
+            }
+        };
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView llmImage;
+        TextView llmName, llmDescription;
+        Button readMoreButton;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            llmImage = itemView.findViewById(R.id.llm_image);
+            llmName = itemView.findViewById(R.id.llm_name);
+            llmDescription = itemView.findViewById(R.id.llm_description);
+            readMoreButton = itemView.findViewById(R.id.read_more_button);
         }
-    };
+    }
 }

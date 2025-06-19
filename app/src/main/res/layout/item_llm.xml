@@ -38,7 +38,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/llm_date"
+            android:id="@+id/llm_release"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -60,7 +60,7 @@
 
         <!-- Read More Button -->
         <Button
-            android:id="@+id/btn_read_more"
+            android:id="@+id/read_more_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Read More"
