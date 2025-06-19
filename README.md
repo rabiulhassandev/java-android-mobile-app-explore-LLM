@@ -5,7 +5,14 @@ Explore LLMs is an educational Android application designed to introduce users t
 ---
 
 ## Demo Screenshots
-![_cgi-bin_mmwebwx-bin_webwxgetmsgimg__ MsgID=3792475713129078465 skey=@crypt_2f3fff13_ab1e890f2c7e051f3603f4c330dc0cae mmweb_appid=wx_webfilehelper](https://github.com/user-attachments/assets/701e8e87-f138-4b2e-b0a1-cce02b1b241a)![_cgi-bin_mmwebwx-bin_webwxgetmsgimg__ MsgID=5372941363292951177 skey=@crypt_2f3fff13_ab1e890f2c7e051f3603f4c330dc0cae mmweb_appid=wx_webfilehelper](https://github.com/user-attachments/assets/098c508b-8807-4f84-9a06-0cbfb3ad3841)![Uploading _cgi-bin_mmwebwx-bin_webwxgetmsgimg__&MsgID=4478462371698021037&skey=@crypt_2f3fff13_ab1e890f2c7e051f3603f4c330dc0cae&mmweb_appid=wx_webfilehelper.jpg…]()![_cgi-bin_mmwebwx-bin_webwxgetmsgimg__ MsgID=2127456199610840321 skey=@crypt_2f3fff13_ab1e890f2c7e051f3603f4c330dc0cae mmweb_appid=wx_webfilehelper](https://github.com/user-attachments/assets/8c23b126-5b14-4669-99b4-46047852d0c5)
+
+<div style="display: flex; align-items: center; justify-content: space-between;">
+  <img src="https://github.com/user-attachments/assets/3de3ae7e-86fa-420e-a041-ccad35ba38ae" width="150"/><br>
+  <img src="https://github.com/user-attachments/assets/44a89e6a-e063-4ba5-a4cf-19c9bfad0077" width="150"/><br>
+  <img src="https://github.com/user-attachments/assets/83a0f02f-b7f2-40da-8974-f560fe63072d" width="150"/><br>
+  <img src="https://github.com/user-attachments/assets/66c8f42c-a660-4119-a907-cf2fc4476af4" width="150"/>
+</div>
+
 
 
 
