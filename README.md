@@ -5,8 +5,10 @@ Explore LLMs is an educational Android application designed to introduce users t
 ---
 
 ## Demo Screenshots
+![_cgi-bin_mmwebwx-bin_webwxgetmsgimg__ MsgID=3792475713129078465 skey=@crypt_2f3fff13_ab1e890f2c7e051f3603f4c330dc0cae mmweb_appid=wx_webfilehelper](https://github.com/user-attachments/assets/701e8e87-f138-4b2e-b0a1-cce02b1b241a)![_cgi-bin_mmwebwx-bin_webwxgetmsgimg__ MsgID=5372941363292951177 skey=@crypt_2f3fff13_ab1e890f2c7e051f3603f4c330dc0cae mmweb_appid=wx_webfilehelper](https://github.com/user-attachments/assets/098c508b-8807-4f84-9a06-0cbfb3ad3841)![Uploading _cgi-bin_mmwebwx-bin_webwxgetmsgimg__&MsgID=4478462371698021037&skey=@crypt_2f3fff13_ab1e890f2c7e051f3603f4c330dc0cae&mmweb_appid=wx_webfilehelper.jpg…]()![_cgi-bin_mmwebwx-bin_webwxgetmsgimg__ MsgID=2127456199610840321 skey=@crypt_2f3fff13_ab1e890f2c7e051f3603f4c330dc0cae mmweb_appid=wx_webfilehelper](https://github.com/user-attachments/assets/8c23b126-5b14-4669-99b4-46047852d0c5)
 
-*(Add your app screenshots here)*
+
+
 
 ---
 
